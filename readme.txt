@@ -71,3 +71,7 @@ git文件删除方式
 7.ssh警告
     第一次使用push命令时，会出一个警告，直接 yes 就可以
     
+    
+克隆远程库
+1.首先在github上面创建一个测试的远程库
+2.git clone https://github.com/chengqingyao/git_clone_test.git 
