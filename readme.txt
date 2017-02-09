@@ -43,3 +43,31 @@ git撤销修改的方式
 git文件删除方式
 1.需要使用命令：git rm 文件名，删除指定文件
 2.如果删除错误，只要这个文件提交到版本库中，那么可以使用 git checkout -- 文件名，将误删文件恢复到最新状态，前提是不能使用 git rm删除版本库中的文件
+
+
+远程仓库
+1.生成ssh key
+    使用命令 ssh-keygen -t rsa -C "youremail@example.com"，如果一切顺利的话，可以在用户主目录里找到.ssh目录，里面有id_rsa和id_rsa.pub两个文件，这两个就是SSH Key的秘钥对，id_rsa是私钥，不能泄露出去，id_rsa.pub是公钥，可以放心地告诉任何人。
+
+2.在github上面添加
+    settings -> SSH and GPG keys 中
+       title任意填
+       key文本框中粘贴：id_rsa.pub 的内容，github通过这个公钥来判断提交修改的人
+       
+3.在Github创建一个远程仓库
+    Create a new repo
+
+4.将本地版本库和远程版本库关联起来
+    git remote add origin git@github.com:xxxx/xxxx
+    远程库的名字就是origin
+    
+5.将本地库的内容推送到远程库上
+    git push -u origin master
+    实际上就是讲当前的master分支推送到远程库，第一推送时，加上 -u 选项，不但可以推送，还会讲本地库和远程库关联起来
+    
+6.提交修改到到远程库
+    git push origin master
+    
+7.ssh警告
+    第一次使用push命令时，会出一个警告，直接 yes 就可以
+    
